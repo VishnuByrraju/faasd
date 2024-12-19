@@ -20,22 +20,6 @@ services:
     # ports:
     #    - "127.0.0.1:8222:8222"
 
-  prometheus:
-    image: docker.io/prom/prometheus:v3.0.1
-# nobody
-    user: "65534"
-    volumes:
-# Config directory
-      - type: bind
-        source: ./prometheus.yml
-        target: /etc/prometheus/prometheus.yml
-# Data directory
-      - type: bind
-        source: ./prometheus
-        target: /prometheus
-    cap_add:
-      - CAP_NET_RAW
-
 
   gateway:
     image: ghcr.io/openfaas/gateway:0.27.12
